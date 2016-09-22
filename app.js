@@ -15,7 +15,7 @@ app.use('/api/v1', apiRouter);
 
 const adminRouter = express.Router();
 const admin = require('./lib/admin')(adminRouter);
-app.use('/admin', admin);
+app.use('/admin', adminRouter);
 
 app.listen(process.env.PORT, function() {
   console.log("Listening on " + process.env.PORT);
