@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Onboarding Service</title>
+    <link href="forge.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="chrome">
+      <div class="wrapper">
+        <nav class="navigation -white -floating">
+          <a class="navigation__logo" href="http://www.dosomething.org"><span>DoSomething.org</span></a>
+          {{#if auth}}
+            <a class="navigation__toggle js-navigation-toggle" href="#"><span>Show Menu</span></a>
+            <div class="navigation__menu">
+              <ul class="navigation__primary">
+                <li>
+                  <a href="/admin">
+                    <strong class="navigation__title">Flows</strong>
+                    <span class="navigation__subtitle">Configure onboarding flows</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/admin/variables">
+                    <strong class="navigation__title">Global variables</strong>
+                    <span class="navigation__subtitle">Light switches</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="navigation__secondary">
+                <li class="navigation__dropdown">
+                  <a href="/logout" class="navigation__dropdown-toggle">logout</a>
+                </li>
+              </ul>
+            </div>
+          {{/if}}
+        </nav>
+        <header class="header" role="banner">
+          <div class="wrapper">
+            <h1 class="header__title">
+              {{header.title}}
+            </h1>
+            <p class="header__subtitle">
+              {{header.subtitle}}
+            </p>
+          </div>
+        </header>
+        <main class="container -padded">
+          <div class="wrapper">
+            {{{body}}}
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="forge.js"></script>
+  </body>
+</html>
