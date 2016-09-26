@@ -4,12 +4,27 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "redis": "redis-server",
+    "mongo": "mongod",
+    "db": "npm run redis | npm run mongo",
+    "start": "heroku local"
   },
   "author": "Joe Kent",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "mongoose": "^4.6.1"
+    "express-handlebars": "^3.0.0",
+    "install": "^0.8.1",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.6.1",
+    "npm": "^3.10.8",
+    "redis": "^2.6.2",
+    "superagent": "^2.3.0"
+  },
+  "engines": {
+    "node": "6.3.1"
   }
 }

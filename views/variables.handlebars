@@ -1,0 +1,35 @@
+<div class="container__block -narrow">
+  <form method="POST" action="/admin/variables">
+    <div class="form-item -padded">
+      <label class="field-label">Enable onboarding</label>
+      <label class="option -radio">
+        <input {{#if vars.enabled}}checked{{/if}} type="radio" name="onboardingToggle" id="onboardingEnabled" value="true">
+        <span class="option__indicator"></span>
+        <span>Enabled</span>
+      </label>
+      <label class="option -radio">
+        <input {{#unless vars.enabled}}checked{{/unless}} type="radio" name="onboardingToggle" id="onboardingDisabled" value="false">
+        <span class="option__indicator"></span>
+        <span>Disabled</span>
+      </label>
+    </div>
+    <div class="form-item -padded">
+      <label class="field-label">Enable developer mode</label>
+      <label class="option -radio">
+        <input {{#if vars.developerMode}}checked{{/if}} type="radio" name="developerToggle" id="developerEnabled" value="true">
+        <span class="option__indicator"></span>
+        <span>Enabled</span>
+      </label>
+      <label class="option -radio">
+        <input {{#unless vars.developerMode}}checked{{/unless}} type="radio" name="developerToggle" id="developerDisabled" value="false">
+        <span class="option__indicator"></span>
+        <span>Disabled</span>
+      </label>
+    </div>
+    <div class="form-item -padded">
+      <label class="field-label" for="password">Disabled Campaigns</label>
+      <input type="text" name="disabledCampaigns" id="disabledCampaigns" class="text-field" placeholder="112,347,52" {{#if vars.disabledCampaigns}}value={{vars.disabledCampaigns}}{{/if}}>
+    </div>
+    <input type="submit" class="button" value="Save">
+  </form>
+</div>
