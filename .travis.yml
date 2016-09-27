@@ -4,3 +4,4 @@ node_js:
 services:
   - mongodb
   - redis-server
+script: npm run travis-test

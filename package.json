@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
+    "travis-test": "npm run start | npm run test",
     "redis": "redis-server",
     "mongo": "mongod",
     "db": "npm run redis | npm run mongo",
