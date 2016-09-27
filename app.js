@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 const authRouter = express.Router();
-const auth = require('./lib/auth');
-app.use('/', auth);
+const auth = require('./lib/auth')(authRouter);
+app.use('/', authRouter);
 
 const apiRouter = express.Router();
 const api = require('./lib/api')(apiRouter);
@@ -30,6 +30,6 @@ const adminRouter = express.Router();
 const admin = require('./lib/admin')(adminRouter);
 app.use('/admin', adminRouter);
 
-app.listen(process.env.PORT || 5000, function() {
+app.listen(process.env.PORT, function() {
   console.log("Listening on " + process.env.PORT);
 });
