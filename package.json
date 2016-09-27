@@ -31,7 +31,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
-    "should": "^11.1.0",
     "supertest": "^2.0.0"
   }
 }
