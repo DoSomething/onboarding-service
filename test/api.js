@@ -1,4 +1,6 @@
-require('dotenv').load();
+if (!process.env.CI) {
+  require('dotenv').load();  
+}
 
 const supertest = require('supertest')
 const chai = require('chai');
