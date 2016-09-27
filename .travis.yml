@@ -1,7 +1,0 @@
-language: node_js
-node_js:
-  - "6"
-services:
-  - mongodb
-  - redis-server
-script: npm run travis-test
