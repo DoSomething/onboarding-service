@@ -38,5 +38,25 @@ describe('Config', function() {
      });
   });
 
-  it('should allow authenticated users to edit config variables');
+  it('should allow authenticated users to edit config variables', done => {
+    server
+     .post('/admin/variables')
+     .send({onboardingToggle: true, developerToggle: true, disabledCampaigns: '1,2,3'})
+     .set('Cookie', ['authenticated=true'])
+     .end((err, res) => {
+       assert.equal(res.status, 302, 'Allows editing');
+       done();
+     });
+  });
+
+  it('should not allow authenticated users to edit config when missing variables', done => {
+    server
+     .post('/admin/variables')
+     .send({onboardingToggle: true, disabledCampaigns: '1,2,3'})
+     .set('Cookie', ['authenticated=true'])
+     .end((err, res) => {
+       assert.notEqual(res.status, 302, 'Disallows editing');
+       done();
+     });
+  });
 });
