@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 const authRouter = express.Router();
-const auth = require('./lib/auth');
-app.use('/', auth);
+const auth = require('./lib/auth')(authRouter);
+app.use('/', authRouter);
 
 const apiRouter = express.Router();
 const api = require('./lib/api')(apiRouter);
