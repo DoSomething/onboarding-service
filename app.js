@@ -30,6 +30,6 @@ const adminRouter = express.Router();
 const admin = require('./lib/admin')(adminRouter);
 app.use('/admin', adminRouter);
 
-app.listen(process.env.PORT, function() {
+app.listen(process.env.PORT || 5000, function() {
   console.log("Listening on " + process.env.PORT);
 });

@@ -4,6 +4,7 @@ This is a service used to configure the onboarding component in Phoenix. It curr
 ## Requirements
 - In order to persist data you're going to need Redis & MongoDB. `brew update` `brew install redis` `brew install mongodb`
 - To simulate the staging/production environment you'll need the [Heroku toolbelt](https://devcenter.heroku.com/articles/heroku-command-line)
+- Finally for testing, you'll want Mocha to be installed globally `npm install -g mocha`
 
 ## Setup
 - Clone the repo

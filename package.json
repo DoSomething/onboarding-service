@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "redis": "redis-server",
     "mongo": "mongod",
     "db": "npm run redis | npm run mongo",
@@ -26,5 +26,10 @@
   },
   "engines": {
     "node": "6.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "dotenv": "^2.0.0"
   }
 }
