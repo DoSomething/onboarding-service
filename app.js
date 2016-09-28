@@ -1,6 +1,14 @@
 const express = require('express');
 const app = express();
 
+const sessions = require('client-sessions');
+app.use(sessions({
+  cookieName: 'onboarding',
+  secret: process.env.COOKIE_SECRET, // should be a large unguessable string
+  duration: 24 * 60 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000
+}));
+
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules/@dosomething/forge/dist')));
