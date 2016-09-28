@@ -4,6 +4,12 @@ const supertest = require('supertest')
 const chai = require('chai');
 const assert = chai.assert;
 
+const encode = require('client-sessions').util.encode;
+const cookieOptions = {
+  cookieName: 'onboarding',
+  secret: process.env.COOKIE_SECRET
+};
+
 const server = supertest.agent(`http://localhost:${process.env.PORT}`);
 
 describe('Config - Api', function() {
@@ -34,7 +40,7 @@ describe('Config - Api', function() {
     server
      .post('/admin/variables')
      .send({onboardingToggle: true, developerToggle: true, disabledCampaigns: '1,2,3'})
-     .set('Cookie', ['authenticated=true'])
+     .set('Cookie', `onboarding=${encode(cookieOptions, {authenticated: 'true'})}`)
      .end((err, res) => {
 
        server

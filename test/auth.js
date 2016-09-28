@@ -4,6 +4,21 @@ const supertest = require('supertest')
 const chai = require('chai');
 const assert = chai.assert;
 
+const decode = require('client-sessions').util.decode;
+const cookieOptions = {
+  cookieName: 'onboarding',
+  secret: process.env.COOKIE_SECRET
+};
+
+function decodeHeader(res) {
+  // This is the original string,
+  // 'set-cookie': [ 'onboarding=ByJ96eKKfXW_o8yPDdmj1Q.RnhoKgmKtxmCOfLq0B0qFSQIqZux2WZvfyIkA8BzWKnWRF3C5MbjJxCOwPk17owZ.1475082327292.86400000.6ug_fkdd_oFQLEI7dwWRBljSqrJX4nTOxx8JJYY3SeQ; path=/; expires=Thu, 29 Sep 2016 17:05:28 GMT; httponly' ],
+  const authHeader = res.header['set-cookie'][0].split(' ')[0].replace('onboarding=', '').replace(';', '');
+  const decodedAuthHeader = decode(cookieOptions, authHeader);
+
+  return decodedAuthHeader;
+}
+
 const server = supertest.agent(`http://localhost:${process.env.PORT}`);
 
 describe('Login', function() {
@@ -14,7 +29,11 @@ describe('Login', function() {
      .end((err, res) => {
        assert.equal(res.header['location'], '/admin', 'redirects properly');
        assert.lengthOf(res.header['set-cookie'], 1), 'auth header is set';
-       assert.include(res.header['set-cookie'][0], 'authenticated=true', 'auth header is true');
+
+       const decodedAuthHeader = decodeHeader(res);
+       assert.isDefined(decodedAuthHeader, 'auth header was encoded properly');
+       assert.deepEqual(decodedAuthHeader.content, {authenticated: 'true'}, 'auth header shows authentication');
+
        done();
      });
   });
@@ -25,7 +44,11 @@ describe('Login', function() {
      .send({'email': 'jkent+3939@dosomething.org', 'password': process.env.TEST_USER_PASSWORD})
      .end((err, res) => {
        assert.equal(res.header['location'], '/', 'redirects properly');
-       assert.notProperty(res.header, 'set-cookie', 'auth header is not set');
+
+       const decodedAuthHeader = decodeHeader(res);
+       assert.isDefined(decodedAuthHeader, 'auth header was encoded properly');
+       assert.deepEqual(decodedAuthHeader.content, {authenticated: 'false'}, 'auth header shows failed authentication');
+
        done();
      });
   });
@@ -35,8 +58,11 @@ describe('Login', function() {
      .get('/logout')
      .end((err, res) => {
        assert.equal(res.header['location'], '/', 'redirects properly');
-       assert.lengthOf(res.header['set-cookie'], 1), 'auth header is set';
-       assert.include(res.header['set-cookie'][0], 'authenticated=;', 'auth header is cleared out');
+
+       const decodedAuthHeader = decodeHeader(res);
+       assert.isDefined(decodedAuthHeader, 'auth header was encoded properly');
+       assert.deepEqual(decodedAuthHeader.content, {}, 'auth header is cleared'); //Trust me, .equal({}, {}) doesn't work. :javascript:
+
        done();
      });
   });
