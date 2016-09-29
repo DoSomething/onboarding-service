@@ -18,6 +18,8 @@ To run the app you'll need two commands (In this order)
 1. `npm run db` -- This starts up Redis & MongoDB locally. You'll only need to run this once while you're developing.
 2. In a different CLI window, run `npm start`. This starts the actual NodeJS server, which you can start/stop at will.
 
+If you're doing fender work, use `npm run build-dev`. This builds all files under public/js using Babel into a single file under public/build with source mapping.
+
 ## Testing
 Please write tests for all new features! All tests are in the `/test` folder and can be executed with `npm run test`.
 
