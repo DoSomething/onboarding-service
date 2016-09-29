@@ -9,8 +9,8 @@
     "mongo": "mongod",
     "db": "npm run redis | npm run mongo",
     "start": "heroku local",
-    "build": "./node_modules/.bin/babel ./public/js --presets babili --out-file ./public/build/client.js",
-    "build-dev": "./node_modules/.bin/babel ./public/js --watch --source-maps --out-file ./public/build/client.js",
+    "build": "./node_modules/.bin/babel ./public/js --presets babili --out-file ./public/build/client.js | node-sass --output-style compressed ./public/scss/main.scss -o ./public/build/",
+    "build-dev": "./node_modules/.bin/babel ./public/js --watch --source-maps --out-file ./public/build/client.js | node-sass --watch ./public/scss ./public/scss/main.scss -o ./public/build/",
     "postinstall": "npm run build"
   },
   "author": "Joe Kent",
@@ -39,6 +39,8 @@
     "babel-preset-react": "^6.16.0",
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
+    "node-sass": "^3.10.0",
+    "nodemon": "^1.10.2",
     "supertest": "^2.0.0"
   }
 }
