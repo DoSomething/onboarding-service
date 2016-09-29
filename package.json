@@ -8,7 +8,10 @@
     "redis": "redis-server",
     "mongo": "mongod",
     "db": "npm run redis | npm run mongo",
-    "start": "heroku local"
+    "start": "heroku local",
+    "build": "./node_modules/.bin/babel ./public/js --presets babili --out-file ./public/build/c2.js",
+    "build-dev": "./node_modules/.bin/babel ./public/js --watch --source-maps --out-file ./public/build/c2.js",
+    "postinstall": "npm run build"
   },
   "author": "Joe Kent",
   "license": "ISC",
@@ -30,6 +33,9 @@
     "node": "6.3.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-babili": "0.0.3",
+    "babel-preset-latest": "^6.16.0",
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
     "supertest": "^2.0.0"
