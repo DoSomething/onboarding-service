@@ -1,0 +1,39 @@
+.card {
+  font-size: 28.125px;
+  margin: 24px 0;
+  padding: 24px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+}
+
+.flow {
+  position: relative;
+}
+
+.flow .card__page {
+  position: absolute;
+  height: 32px;
+  top: -32px;
+  left: 0;
+  color: #444;
+}
+
+.flow__item .button:first-of-type {
+  background-color: #23b7fb;
+}
+
+.card__nav {
+  border-bottom: 2px solid #23b7fb;
+  line-height: 30px;
+}
+
+.card__nav-item {
+  color: #444;
+  margin-right: 16px;
+}
+
+.card__nav-item.-active, .card__nav-item:hover {
+  color: #23b7fb;
+  text-decoration: none;
+  cursor: pointer;
+}
