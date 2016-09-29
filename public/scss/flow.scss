@@ -1,5 +1,17 @@
-$badass: #bada55;
-body {
-  margin: 100;
-  background-color: $badass;
+@import "../../node_modules/@dosomething/forge/scss/_utilities/_variables";
+
+.flow {
+  position: relative;
+
+  .card__page {
+    position: absolute;
+    height: 32px;
+    top: -32px;
+    left: 0;
+    color: $dark-gray;
+  }
+}
+
+.flow-item .button:first-of-type {
+  background-color: $blue;
 }

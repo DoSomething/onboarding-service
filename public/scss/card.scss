@@ -1,0 +1,25 @@
+@import "../../node_modules/@dosomething/forge/scss/_utilities/_variables";
+
+.card {
+  font-size: 28.125px;
+  margin: $base-spacing 0;
+  padding: $base-spacing;
+  border-radius: 2px;
+  border: 1px solid $light-gray;
+
+  .card__nav {
+    border-bottom: 2px solid $blue;
+    line-height: 30px;
+
+    .card__nav-item {
+      color: $dark-gray;
+      margin-right: 16px;
+
+      &.-active, &:hover {
+        color: $blue;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
