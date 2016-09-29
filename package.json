@@ -9,8 +9,8 @@
     "mongo": "mongod",
     "db": "npm run redis | npm run mongo",
     "start": "heroku local",
-    "build": "./node_modules/.bin/babel ./public/js --presets babili --out-file ./public/build/client.js | node-sass --output-style compressed ./public/scss/main.scss -o ./public/build/",
-    "build-dev": "./node_modules/.bin/babel ./public/js --watch --source-maps --out-file ./public/build/client.js | node-sass --watch ./public/scss ./public/scss/main.scss -o ./public/build/",
+    "build": "./node_modules/.bin/babel ./public/js/main.js --presets babili --out-file ./public/build/main.js | ./node_modules/.bin/babel ./public/js/components --presets babili --out-file ./public/build/components.js | node-sass --output-style compressed ./public/scss/main.scss -o ./public/build/",
+    "build-dev": "node-sass --watch ./public/scss ./public/scss/main.scss -o ./public/build/ | ./node_modules/.bin/babel ./public/js/main.js --watch --source-maps --out-file ./public/build/main.js | ./node_modules/.bin/babel ./public/js/components --watch --source-maps --out-file ./public/build/components.js",
     "postinstall": "npm run build"
   },
   "author": "Joe Kent",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-preset-babili": "0.0.3",
+    "babel-preset-es2015": "^6.16.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "chai": "^3.5.0",

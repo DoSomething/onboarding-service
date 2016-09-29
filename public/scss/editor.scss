@@ -1,0 +1,25 @@
+@import "../../node_modules/@dosomething/forge/scss/_utilities/_variables";
+
+.box-selection {
+  .box__choice {
+    width: 90px;
+    display: table-cell;
+    text-align: center;
+    padding-right: 16px;
+
+    img {
+      &.-active, &:hover {
+        box-shadow: 0px 0px 12px 1px $blue;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      font-family: $font-proxima-nova;
+      font-weight: $weight-normal;
+      font-size: 14px;
+      line-height: 16px;
+      margin-top: 4px;
+    }
+  }
+}

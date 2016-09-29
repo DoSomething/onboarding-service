@@ -10,16 +10,21 @@
   .card__nav {
     border-bottom: 2px solid $blue;
     line-height: 30px;
+    padding-bottom: 8px;
 
-    .card__nav-item {
+    a {
       color: $dark-gray;
-      margin-right: 16px;
+      margin-right: $base-spacing * 2;
 
       &.-active, &:hover {
-        color: $blue;
+        border-bottom: 8px solid #23b7fb;
         text-decoration: none;
         cursor: pointer;
       }
     }
+  }
+
+  .card__content {
+    margin-top: $base-spacing;
   }
 }
