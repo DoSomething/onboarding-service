@@ -23,3 +23,19 @@
     }
   }
 }
+
+.copy-edit {
+  .-delete {
+    background-color: $error-color;
+  }
+
+  .select {
+    width: auto;
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+
+.selector__padded {
+  margin-bottom: 16px;
+}

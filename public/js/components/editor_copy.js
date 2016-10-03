@@ -6,53 +6,56 @@ class CopyEditor extends React.Component {
       copy: []
     }
 
-    this.renderForm = this.renderForm.bind(this);
-    this.renderCopy = this.renderCopy.bind(this);
-    this.deleteCopy = this.deleteCopy.bind(this);
+    this.getFormItem = this.getFormItems.bind(this);
+    this.copyChange = this.copyChange.bind(this);
     this.addCopy = this.addCopy.bind(this);
+    this.deleteCopy = this.deleteCopy.bind(this);
   }
 
   deleteCopy(index) {
-    delete this.state[index];
-  }
-
-  addCopy(type) {
-    const text = document.getElementById(`copy_${type}`).value;
-    this.state.copy.push({type: type, text: text});
+    this.state.copy.splice(index, 1);
     this.forceUpdate();
   }
 
-  renderForm() {
-    return (
-      <div className="copy-edit">
-        <div className="form-item">
-          <label className="field-label">Header</label>
-          <input id="copy_header" type="text" className="text-field"></input>
-          <a className="button -padded" onClick={()=>this.addCopy('header')}>Add header</a>
-        </div>
-        <div className="form-item">
-          <label className="field-label">Paragraph</label>
-          <input id="copy_paragraph" type="text" className="text-field"></input>
-          <a className="button -padded" onClick={()=>this.addCopy('paragraph')}>Add paragraph</a>
-        </div>
-      </div>
-    );
+  addCopy() {
+    this.state.copy.push({type: 'header', text: ''});
+    this.forceUpdate();
   }
 
-  renderCopy() {
-    const copy = this.state.copy.map(function(c, index) {
-      if (c.type === 'header') return <h1 key={index} onClick={()=>this.deleteCopy(index)}>{c.text}</h1>
-      if (c.type === 'paragraph') return <p key={index} onClick={()=>this.deleteCopy(index)}>{c.text}</p>
-    }.bind(this));
+  copyChange(e) {
+    this.state.copy[e.target.dataset.index] = e.target.value;
+    this.forceUpdate();
+  }
 
-    return copy || null;
+  dragStart() {
+
+  }
+
+  getFormItems(copy) {
+    const items = this.state.copy.map(function(c, index) {
+      return (
+        <div key={index} id={`copy_${index}`} className="form-item -inline -padded">
+          <div className="select -inline">
+            <select>
+              <option>Header</option>
+              <option>Paragraph</option>
+            </select>
+          </div>
+          <input id="copy_header" type="text" className="text-field" value={c.text} onChange={this.copyChange} data-index={index}></input>
+          <a className="button -padded -delete" onClick={()=> this.deleteCopy(index)}>Delete</a>
+        </div>
+      );
+    }.bind(this));
+    return items;
   }
 
   render() {
     return (
       <div>
-        {this.renderForm()}
-        {this.renderCopy()}
+        <a className="button" onClick={this.addCopy}>Add</a>
+        <div className="copy-edit">
+          {this.getFormItems()}
+        </div>
       </div>
     );
   }
