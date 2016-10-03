@@ -21,7 +21,7 @@ To run the app you'll need two commands (In this order)
 ## Fender Development
 Frontend JS is located under the /js/ folder, SCSS in the /scss/ folder. We use React for constructing our interfaces & Forge to keep styling consistent.
 
-When `npm install` runs it automatically builds the frontend assets for you. To rebuild the assets again, use `npm run build`, which minifies and compresses everything. If you're working locally, use `npn run build_dev`, which watches for changes & does not minify assets.
+When `npm install` runs it automatically builds the frontend dev & prod assets for you. To rebuild the assets again, use `npm run build`, which minifies and compresses everything. If you're working locally, use `npn run build_dev`, which watches for changes & does not minify assets.
 
 ## Testing
 Please write tests for all new features! All tests are in the `/test` folder and can be executed with `npm run test`.

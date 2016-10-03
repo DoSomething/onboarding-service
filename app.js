@@ -18,6 +18,9 @@ app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   partialsDir: [__dirname + '/views/partials'],
   helpers: {
+    isProduction: opts => {
+      return process.env.PRODUCTION === undefined ? opts.inverse(this) : opts.fn(this);
+    }
   }
 }));
 app.set('view engine', 'handlebars');
