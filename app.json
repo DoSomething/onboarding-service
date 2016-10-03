@@ -1,0 +1,39 @@
+{
+  "name": "onboarding-service",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "COOKIE_SECRET": {
+      "required": true
+    },
+    "NORTHSTAR_CLIENT_ID": {
+      "required": true
+    },
+    "NORTHSTAR_CLIENT_SECRET": {
+      "required": true
+    },
+    "NORTHSTAR_URL": {
+      "required": true
+    },
+    "TEST_ADMIN_PASSWORD": {
+      "required": true
+    },
+    "TEST_USER_PASSWORD": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-redis"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
