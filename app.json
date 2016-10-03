@@ -21,7 +21,8 @@
     },
     "TEST_USER_PASSWORD": {
       "required": true
-    }
+    },
+    "PRODUCTION_ASSETS": "true"
   },
   "formation": {
     "web": {

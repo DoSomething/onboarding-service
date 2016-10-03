@@ -19,7 +19,7 @@ app.engine('handlebars', exphbs({
   partialsDir: [__dirname + '/views/partials'],
   helpers: {
     isProduction: opts => {
-      return process.env.PRODUCTION === undefined ? opts.inverse(this) : opts.fn(this);
+      return process.env.PRODUCTION_ASSETS === undefined ? opts.inverse(this) : opts.fn(this);
     }
   }
 }));
