@@ -1,0 +1,1 @@
+node-sass --watch ./public/scss ./public/scss/main.scss -o ./public/build/ | ./node_modules/.bin/babel ./public/js/main.js --watch --source-maps --out-file ./public/build/main.js | ./node_modules/.bin/babel ./public/js/components --watch --source-maps --out-file ./public/build/components.js
