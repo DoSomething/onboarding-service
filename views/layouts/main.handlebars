@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Onboarding Service</title>
     <link href="/forge.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
   </head>
   <body>
     <div class="chrome">
@@ -54,6 +55,18 @@
         </main>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="/forge.js"></script>
+    {{#isProduction}}
+      <script src="https://unpkg.com/react@15.3.2/dist/react.min.js"></script>
+      <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.min.js"></script>
+      <script src="/js/main.min.js"></script>
+      <script src="/js/components.min.js"></script>
+    {{else}}
+      <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+      <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/components.js"></script>
+    {{/isProduction}}
   </body>
 </html>
